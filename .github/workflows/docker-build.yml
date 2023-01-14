@@ -2,10 +2,6 @@ name: Build & Push to container registry
 
 on:
   workflow_call
-    secrets:
-      ghcr-token:
-        required: true
-        description: Github token allowing access to the libraries and ghcr.
 
 jobs:
   build:
