@@ -43,7 +43,7 @@ jobs:
           flavor: |
             latest=auto
             suffix=${{ steps.flavor.outputs.name }}
-          images: "ghcr.io/nezuchan/${{ steps.string.outputs.lowercase }}"
+          images: "ghcr.io/${{ steps.string.outputs.lowercase }}"
           tags: |
             ${{ steps.tags.outputs.name }}
             latest
