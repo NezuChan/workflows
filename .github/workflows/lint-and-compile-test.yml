@@ -1,5 +1,8 @@
 name: Lint code & compile test
 
+on:
+  workflow_call:
+
 jobs:
   lint:
     runs-on: ubuntu-latest
