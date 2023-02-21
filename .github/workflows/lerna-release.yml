@@ -25,6 +25,6 @@ jobs:
             echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > .npmrc
       - name: Publish source
         run: |
-          npx lerna publish from-package --no-private --no-verify-access --registry https://registry.npmjs.org/ --yes
+          npx lerna publish from-package --no-private --no-verify-access --registry https://registry.npmjs.org/ --yes --access public
         env:
           npm_config__auth: '${{ secrets.NPM_TOKEN }}'
