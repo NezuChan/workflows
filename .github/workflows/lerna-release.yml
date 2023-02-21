@@ -20,6 +20,6 @@ jobs:
         run: npm run build
       - name: Publish source
         run: |
-          npx lerna publish from-package --no-private --registry https://registry.npmjs.org/
+          npx lerna publish from-package --no-private --registry https://registry.npmjs.org/ --yes
         env:
           npm_config__auth: '${{ secrets.NPM_TOKEN }}'
