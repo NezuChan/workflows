@@ -1,8 +1,15 @@
+
+Save New Duplicate & Edit Just Text Twitter
 name: Compile test
 
 on:
   workflow_call:
     inputs:
+      ADDITIONAL_PACKAGES:
+        description: "Additional packages to install"
+        type: string
+        required: false
+        default: ""
       TARGET_FILE:
         description: "Go file to build"
         type: string
@@ -15,9 +22,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+
+      - name: Install additional packages
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: ${{ inputs.ADDITIONAL_PACKAGES }}
+          version: 1.0
+      
       - name: Setup Golang
         uses: actions/setup-go@v3
         with:
           go-version: '1.20'
+      
       - name: Test compile
         run: go build ${{ inputs.TARGET_FILE }}
