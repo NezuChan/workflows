@@ -2,6 +2,12 @@ name: Compile test
 
 on:
   workflow_call:
+    inputs:
+      TARGET_FILE:
+        description: "Go file to build"
+        type: string
+        required: false
+        default: "."
 
 jobs:
   compile:
@@ -14,4 +20,4 @@ jobs:
         with:
           go-version: '1.20'
       - name: Test compile
-        run: go build
+        run: go build ${{ inputs.TARGET_FILE }}
