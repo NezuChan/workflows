@@ -6,7 +6,7 @@ on:
         description: "Dockerfile to build"
         type: string
         required: false
-        default: "{context}/Dockerfile"
+        default: "Dockerfile"
 
 jobs:
   build:
