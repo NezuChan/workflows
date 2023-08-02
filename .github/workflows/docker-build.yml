@@ -7,6 +7,11 @@ on:
         type: string
         required: false
         default: "Dockerfile"
+      TARGET_IMAGE_NAME:
+        description: "Docker image name"
+        type: string
+        required: false
+        default: ""
 
 jobs:
   build:
@@ -48,7 +53,7 @@ jobs:
           flavor: |
             latest=auto
             suffix=${{ steps.flavor.outputs.name }}
-          images: "ghcr.io/${{ steps.string.outputs.lowercase }}"
+          images: "ghcr.io/${{ inputs.TARGET_IMAGE_NAME || steps.string.outputs.lowercase }}"
           tags: |
             ${{ steps.tags.outputs.name }}
             latest
