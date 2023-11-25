@@ -7,7 +7,7 @@ on:
         description: "Additional packages to install"
         type: string
         required: false
-        default: ""
+        default: "cowsay"
       TARGET_FILE:
         description: "Go file to build"
         type: string
