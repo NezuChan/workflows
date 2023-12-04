@@ -19,8 +19,11 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Compile source
         run: pnpm run build
+      - name: "NPM Identity"
+        env:
+          NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}'
+        run: |
+            echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > .npmrc
       - name: Publish source
         run: |
           pnpm publish --no-git-checks --access public || true
-        env:
-          NPM_TOKEN: '${{ secrets.NPM_TOKEN }}'
