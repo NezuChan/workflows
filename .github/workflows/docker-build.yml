@@ -64,6 +64,7 @@ jobs:
         with:
           file: ${{ inputs.TARGET_FILE }}
           context: ./
+          platforms: "linux/amd64,linux/arm64/v8"
           tags: ${{ steps.img_meta.outputs.tags }}
           labels: ${{ steps.img_meta.outputs.labels }}
           push: ${{ github.event_name != 'pull_request' }}
