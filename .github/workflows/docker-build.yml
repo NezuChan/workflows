@@ -17,10 +17,6 @@ on:
         type: string
         required: false
         default: "linux/amd64,linux/arm64/v8"
-    secrets:
-      GH_PKG_TOKEN:
-        description: Github Package token for .npmrc
-        required: false
 
 jobs:
   build:
@@ -81,5 +77,5 @@ jobs:
           cache-to: type=gha,mode=max
           secrets: |
             GITHUB_SHA=${{ github.sha }}
-            GH_PKG_TOKEN=${{ secrets.GH_PKG_TOKEN || secrets.GH_TOKEN }}
+            GH_PKG_TOKEN=${{ secrets.GH_TOKEN }}
           
