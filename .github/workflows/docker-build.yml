@@ -77,4 +77,5 @@ jobs:
           cache-to: type=gha,mode=max
           secrets: |
             GITHUB_SHA=${{ github.sha }}
-            GITHUB_TOKEN=${{ secrets.NPM_TOKEN }}
+          build-args: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
