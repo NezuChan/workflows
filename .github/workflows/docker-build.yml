@@ -63,19 +63,12 @@ jobs:
             ${{ steps.tags.outputs.name }}
             latest
     
-      - name: Create .npmrc
-        run: 'echo -e "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" > .secret_npmrc'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@c56af957549030174b10d6867f20e78cfd7debc5 # v3.2.0
         with:
           file: ${{ inputs.TARGET_FILE }}
           context: ./
-          secret-files: |
-            "npmrc=./.secret_npmrc"
           platforms: ${{ inputs.PLATFORMS }}
           tags: ${{ steps.img_meta.outputs.tags }}
           labels: ${{ steps.img_meta.outputs.labels }}
@@ -85,4 +78,4 @@ jobs:
           secrets: |
             GITHUB_SHA=${{ github.sha }}
           build-args: |
-            GITHUB_TOKEN=${{ secrets.NPM_TOKEN }}
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
