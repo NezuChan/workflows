@@ -32,11 +32,18 @@ jobs:
       uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598 # v2.4.0
       with:
         version: latest
+  
     - name: Setup Node.js
       uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3
       with:
         node-version-file: .node-version
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
     - name: Installing dependencies
       run: pnpm install --frozen-lockfile
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Test compile
       run: pnpm run build
