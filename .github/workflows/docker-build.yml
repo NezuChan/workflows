@@ -57,11 +57,11 @@ jobs:
         with:
           flavor: |
             latest=auto
-            suffix=${{ steps.flavor.outputs.name }}
           images: "ghcr.io/${{ inputs.TARGET_IMAGE_NAME || steps.string.outputs.lowercase }}"
           tags: |
-            ${{ steps.tags.outputs.name }}
-            latest
+            type=ref,event=branch
+            type=sha,prefix=,suffix=,format=short
+
     
       - name: Build and push
         id: docker_build
@@ -73,8 +73,6 @@ jobs:
           tags: ${{ steps.img_meta.outputs.tags }}
           labels: ${{ steps.img_meta.outputs.labels }}
           push: ${{ github.event_name != 'pull_request' }}
-          cache-from: type=gha,mode=max
-          cache-to: type=gha,mode=max
           secrets: |
             GITHUB_SHA=${{ github.sha }}
             GH_PKG_TOKEN=${{ secrets.GH_TOKEN }}
