@@ -27,7 +27,7 @@ jobs:
 
       - name: Set up Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@8c0edbc76e98fa90f69d9a2c020dcb50019dc325 # v2.2.1
+        uses: docker/setup-buildx-action@885d1462b80bc1c1c7f0b00334ad271f09369c55 # v2.10.0
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3.2.0
@@ -52,7 +52,7 @@ jobs:
           string: ${{ github.repository }}
 
       - name: Generate Docker image metadata
-        uses: docker/metadata-action@05d22bf31770de02e20c67c70365453e00227f61 # v4.2.0
+        uses: docker/metadata-action@818d4b7b91585d195f67373fd9cb0332e31a7175 # v4.6.0
         id: img_meta
         with:
           flavor: |
