@@ -17,10 +17,15 @@ on:
         type: string
         required: false
         default: "linux/amd64,linux/arm64/v8"
+      RUNNER:
+        description: "Runner to use"
+        type: string
+        required: false
+        default: 'ubuntu-latest'
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.RUNNER }}
     steps:
       - name: Check Out Repo
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
