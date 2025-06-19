@@ -66,7 +66,7 @@ jobs:
           tags: |
             type=ref,event=branch
             type=sha,prefix=,suffix=,format=short
-
+            type=raw,value=${{ steps.tags.outputs.name }},enable=${{ github.event_name == 'release' }}
     
       - name: Build and push
         id: docker_build
